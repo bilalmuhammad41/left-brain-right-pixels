@@ -25,6 +25,7 @@
   text-align: left;
   font-size: clamp(2.5rem, 8vw, 10rem);
   font-weight: 900;
+  line-height: 0.85;
   letter-spacing: -0.03em;
   max-width: 14ch;
   width: 100%;

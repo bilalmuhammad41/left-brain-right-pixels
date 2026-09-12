@@ -1,6 +1,6 @@
 # Utilities Index
 
-Shared utilities in `src/lib/`, `src/constants/`, `src/assets/`, and `src/lib/cursor/`.
+Shared utilities in `src/lib/`, `src/constants/`, and `src/assets/`.
 
 **Rule:** Search here before implementing helpers. Do not reimplement slug normalization, base path handling, scroll utilities, or cursor geometry.
 
@@ -87,28 +87,18 @@ Preloads DM Sans weights from `PRELOAD_FONT_DESCRIPTORS` in `fontFaces.js`.
 
 ---
 
-## lib/cursor/ (TypeScript)
+## lib/cursor/
 
-Framework-agnostic GSAP cursor system. **Full API:** [src/lib/cursor/README.md](../../src/lib/cursor/README.md)
+[Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) + [magnetic demo](https://github.com/Cuberto/cursor-magnetic-demo). React mount: `src/components/CustomCursor/CustomCursor.jsx`.
 
-| Module | Exports | Purpose |
-|--------|---------|---------|
-| `index.ts` | `Cursor`, `initMagneticElements`, types, constants | Public API |
-| `Cursor.ts` | `Cursor` class | Jelly cursor, stick, blend, text label |
-| `MagneticManager.ts` | `MagneticManager`, `initMagneticElements` | Magnetic pull on `[data-magnetic]` |
-| `utils.ts` | `getElementCenter`, `lerp`, attribute readers | Geometry + DOM helpers |
-| `constants.ts` | `CURSOR_DEFAULTS`, `MAGNETIC_DEFAULTS`, `DATA_ATTRS`, `CSS_CLASSES`, `CURSOR_EVENTS` | Tuneable values |
-| `types.ts` | `Point`, `CursorOptions`, etc. | TypeScript interfaces |
-
-### Key constants
-
-| Constant | Purpose |
-|----------|---------|
-| `CURSOR_EVENTS.RELEASE_STICK` | `"cursor:release-stick"` — release sticky cursor |
-| `DATA_ATTRS.MAGNETIC` | `"data-magnetic"` attribute key |
-| `CSS_CLASSES.CURSOR` | `.cb-cursor` root class |
-
-**Never reimplement:** cursor lerp, jelly deformation, magnetic pull math — extend `constants.ts` instead.
+| Export | Purpose |
+|--------|---------|
+| `createMouseFollower(options?)` | Configured `MouseFollower` instance |
+| `Magnetic` | Element magnetic pull on `[data-magnetic]` |
+| `initMagneticElements(root?)` | Scan and bind magnetic elements |
+| `shouldEnableCursor()` | Desktop / fine-pointer gate |
+| `CURSOR_EVENTS.RELEASE_STICK` | `"cursor:release-stick"` — release stick + hover states |
+| `MENU_STICK_RADIUS` | Stick hold distance from menu trigger center (px) |
 
 ---
 
@@ -156,7 +146,7 @@ These do not exist as standalone modules — use existing patterns:
 | Debounce/throttle | Not extracted — inline in components if needed |
 | Easing | GSAP eases + Tailwind `ease-in-expo`/`ease-out-expo` |
 | Formatting | Inline (e.g. clock in `SiteShell`) |
-| DOM helpers | `lib/cursor/utils.ts` for cursor-specific geometry only |
+| DOM helpers | Inline in components if needed |
 
 If a utility is needed in 2+ places, extract to `src/lib/` and document here.
 
@@ -175,8 +165,8 @@ import { PAGE_REGISTRY } from "@/lib/pages";
 // Assets
 import { profile_picture } from "@/assets";
 
-// Cursor (from React components)
-import { Cursor, initMagneticElements, CURSOR_EVENTS } from "@/lib/cursor";
+// Cursor
+import { createMouseFollower, initMagneticElements, CURSOR_EVENTS } from "@/lib/cursor";
 ```
 
 ## Related

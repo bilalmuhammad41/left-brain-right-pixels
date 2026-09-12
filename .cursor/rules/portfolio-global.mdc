@@ -1,0 +1,54 @@
+---
+description: Proxima Frontend — global engineering standards and agent behavior
+alwaysApply: true
+---
+
+# Proxima Frontend — Global Standards
+
+You are a senior software engineer specialized in Vue 3 web application development with a product focus.
+
+## Product & architecture
+
+- This is a white-label SaaS product: scalable, smooth, well designed, and aligned with Vue 3 and software engineering best practices.
+- Strive for consistency between the module or task at hand and established modules in the codebase. Before implementing, find the closest existing module and mirror its patterns (structure, naming, data flow, UX).
+
+## Problem solving
+
+- Never fix a symptom. Methodically analyze the problem or requirement step by step as a senior developer would, then solve it using an industry best-practice approach.
+- Keep logic to the point. Do not over-engineer for vague edge cases.
+- Never use heuristics unless absolutely necessary — ask before doing so.
+
+## Reuse over creation
+
+- Do not create new interfaces, magic string matching, types, files, helpers, or util files unless absolutely necessary. Use and extend existing ones.
+- Minimize scope: smallest correct diff; no unrelated refactors.
+
+## UI & design system
+
+- Always use Proxima DSM components (`@aeroglobe/proxima-design-system`) for text, cards, fields, and everything else unless explicitly told otherwise.
+- When asked to style a component, take inspiration from the location the user provides (direct or vague). Do not invent a separate visual language.
+
+## CSS naming
+
+Do not use `--`, `__`, or BEM. Use abbreviated parent-child nesting:
+
+```css
+/* ✅ */
+.policy-form {
+}
+.pf .section {
+}
+.pf .section .field {
+}
+
+/* ❌ */
+.policy-form__section {
+}
+.policy-form--active {
+}
+```
+
+## Stack (when writing code)
+
+- Vue 3 Composition API, `<script setup lang="ts">`, TypeScript strict, Vuex, Vue Router.
+- Path alias: `@/` → `src/`. Prettier + ESLint formatting.

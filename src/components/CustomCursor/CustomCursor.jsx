@@ -2,41 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { Cursor, initMagneticElements } from "@/lib/cursor";
+import {
+  createMouseFollower,
+  initMagneticElements,
+  CURSOR_EVENTS,
+  MENU_STICK_RADIUS,
+  shouldEnableCursor,
+} from "@/lib/cursor";
+import "mouse-follower/dist/mouse-follower.min.css";
 import "./CustomCursor.css";
 
 /**
- * Returns true on desktop pointer devices without reduced-motion preference.
- * The custom cursor is intentionally disabled on touch and mobile viewports.
- */
-function shouldEnableCursor() {
-  if (typeof window === "undefined") return false;
-  if (window.matchMedia("(pointer: coarse)").matches) return false;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  return window.matchMedia("(min-width: 768px)").matches;
-}
-
-/**
- * Mounts the custom cursor and magnetic attraction system.
- *
- * Render this once at the root layout level, outside any scroll
- * wrapper, so `mix-blend-mode` on the cursor works correctly.
- *
- * @example
- * ```tsx
- * // app/layout.tsx
- * import CustomCursor from "@/components/CustomCursor";
- * export default function RootLayout({ children }) {
- *   return (
- *     <html>
- *       <body>
- *         {children}
- *         <CustomCursor />
- *       </body>
- *     </html>
- *   );
- * }
- * ```
+ * Mounts Cuberto Mouse Follower (stick) + magnetic demo (element pull).
  */
 export default function CustomCursor() {
   const pathname = usePathname();
@@ -46,26 +23,73 @@ export default function CustomCursor() {
   useEffect(() => {
     if (!shouldEnableCursor()) return;
 
-    cursorRef.current = new Cursor();
-    cleanupMagneticRef.current = initMagneticElements(document, {
-      getStickTarget: () => cursorRef.current?.stickTarget ?? null,
+    const cursor = createMouseFollower();
+    cursorRef.current = cursor;
+    cleanupMagneticRef.current = initMagneticElements(document);
+
+    const getMenuStickTarget = () => {
+      if (document.querySelector('[data-cursor-stick="#nav-menu-trigger"]')) {
+        return document.getElementById("nav-menu-trigger");
+      }
+      if (document.querySelector('[data-cursor-stick="#nav-mobile-menu-trigger"]')) {
+        return document.getElementById("nav-mobile-menu-trigger");
+      }
+      return null;
+    };
+
+    const distanceToCenter = (el) => {
+      const rect = el.getBoundingClientRect();
+      return Math.hypot(
+        cursor.pos.x - (rect.left + rect.width / 2),
+        cursor.pos.y - (rect.top + rect.height / 2)
+      );
+    };
+
+    // Library stick ends on mouseout of the small trigger. Hold stick while
+    // the pointer stays within MENU_STICK_RADIUS of the button center.
+    cursor.on("render", () => {
+      const target = getMenuStickTarget();
+      if (!target) {
+        if (cursor.stick) {
+          cursor.removeStick();
+          cursor.removeState("-exclusion -opaque");
+        }
+        return;
+      }
+
+      if (distanceToCenter(target) < MENU_STICK_RADIUS) {
+        cursor.setStick(target);
+        cursor.addState("-exclusion -opaque");
+        return;
+      }
+
+      if (cursor.stick) {
+        cursor.removeStick();
+        cursor.removeState("-exclusion -opaque");
+      }
     });
 
+    const onReleaseStick = () => {
+      cursor.removeStick();
+      // Hiding the trigger skips mouseout, so hover states stay on the
+      // follower until the next hover. Clear them with the library API.
+      cursor.removeState("-exclusion -opaque");
+    };
+
+    document.addEventListener(CURSOR_EVENTS.RELEASE_STICK, onReleaseStick);
+
     return () => {
+      document.removeEventListener(CURSOR_EVENTS.RELEASE_STICK, onReleaseStick);
       cleanupMagneticRef.current?.();
-      cursorRef.current?.destroy();
+      cursor.destroy();
       cursorRef.current = null;
     };
   }, []);
 
-  // Re-scan for [data-magnetic="true"] elements after each route change since
-  // new elements may have mounted that weren't present on initial load.
   useEffect(() => {
     if (!cursorRef.current) return;
     cleanupMagneticRef.current?.();
-    cleanupMagneticRef.current = initMagneticElements(document, {
-      getStickTarget: () => cursorRef.current?.stickTarget ?? null,
-    });
+    cleanupMagneticRef.current = initMagneticElements(document);
   }, [pathname]);
 
   return null;
