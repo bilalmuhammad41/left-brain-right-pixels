@@ -10,7 +10,7 @@ Portfolio site for Muhammad Bilal — a **Next.js 16 App Router** project with *
 | UI | React 19 |
 | Animation | GSAP 3 (`ScrollSmoother`, `ScrollTrigger`) |
 | Styling | Tailwind CSS 3 + co-located CSS + CSS variables |
-| Cursor | Custom TypeScript module (`src/lib/cursor/`) |
+| Cursor | [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) via `src/lib/mouseFollower.js` |
 | Deploy | GitHub Actions → GitHub Pages |
 
 ## Hybrid routing model
@@ -40,7 +40,7 @@ flowchart TB
   PTS --> Smoother["ScrollSmootherWrapper"]
   PTS --> Views["PAGE_REGISTRY views"]
   PTS --> Curtain["TransitionCurtain + Overlay"]
-  Cursor --> CursorLib["lib/cursor"]
+  Cursor --> CursorLib["lib/mouseFollower.js"]
   Smoother --> GSAP["lib/gsap.js"]
 ```
 
@@ -50,7 +50,7 @@ flowchart TB
 2. `SiteLayout` — renders `SiteShell` only (does not render `{children}`)
 3. `SplashScreen` — preloads assets via `preloadAssets`, then exits
 4. `ThemeProvider` — applies `data-theme` on `<html>`
-5. `CustomCursor` — mounts GSAP cursor + magnetic system (desktop only)
+5. `CustomCursor` — mounts Cuberto Mouse Follower (desktop only)
 6. `PageTransitionShell` — mounts all views, runs initial enter animation, handles navigation
 
 ## Folder map

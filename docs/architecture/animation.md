@@ -22,18 +22,17 @@ flowchart TB
 
   subgraph cursor [Cursor Layer]
     CC["CustomCursor.jsx"]
-    CursorTS["lib/cursor/Cursor.ts"]
-    MagneticTS["lib/cursor/MagneticManager.ts"]
+    MF["lib/mouseFollower.js"]
+    MFLib["mouse-follower npm"]
   end
 
   gsapLib --> Smoother
   gsapLib --> ST
   PTS --> transJS
   transJS --> Curtain
-  CC --> CursorTS
-  CC --> MagneticTS
-  CursorTS --> gsapLib
-  MagneticTS --> gsapLib
+  CC --> MF
+  MF --> MFLib
+  MF --> gsapLib
 ```
 
 ## GSAP entry point
@@ -123,12 +122,10 @@ CSS initial states: `src/components/PageTransition/PageViews.css`
 
 After DOM/layout changes, call `refreshScroll()`.
 
-## Custom cursor & magnetic
+## Custom cursor (Cuberto Mouse Follower)
 
 React adapter: `src/components/CustomCursor/CustomCursor.jsx`  
-Core library: `src/lib/cursor/` (TypeScript, framework-agnostic)
-
-**Deep API reference:** [src/lib/cursor/README.md](../../src/lib/cursor/README.md)
+Factory: `src/lib/cursor/mouseFollower.js` — wraps [mouse-follower](https://github.com/Cuberto/mouse-follower)
 
 ### Enable conditions
 
@@ -137,11 +134,12 @@ Disabled on: touch devices, `prefers-reduced-motion`, viewport `< 768px`.
 ### Key APIs
 
 ```js
-import { Cursor, initMagneticElements, CURSOR_EVENTS } from "@/lib/cursor";
+import { createMouseFollower, CURSOR_EVENTS } from "@/lib/cursor";
 
-const cursor = new Cursor();
-const destroyMagnetic = initMagneticElements(document, {
-  getStickTarget: () => cursor.stickTarget,
+const cursor = createMouseFollower();
+document.addEventListener(CURSOR_EVENTS.RELEASE_STICK, () => {
+  cursor.removeStick();
+  cursor.removeState("-exclusion -opaque");
 });
 ```
 
@@ -149,19 +147,17 @@ const destroyMagnetic = initMagneticElements(document, {
 
 | Attribute | Effect |
 |-----------|--------|
-| `data-magnetic="true"` | Magnetic pull toward cursor |
+| `data-cursor` | Cursor state(s), e.g. `"-exclusion"` |
 | `data-cursor-stick` | Cursor sticks to element |
-| `data-cursor-scale` | Scale cursor on hover |
-| `data-cursor-blend` | Blend mode (e.g. `difference`) |
 | `data-cursor-text` | Show label text |
 
-`TransitionLink` sets `data-cursor-blend="difference"` and `data-cursor-scale="2.8"` by default.
+`TransitionLink` sets `data-cursor="-exclusion"` by default.
 
 ### Events
 
-`cursor:release-stick` — dispatched by Nav when menus open; releases sticky cursor.
+`cursor:release-stick` — dispatched by Nav when the menu trigger hides. Releases stick **and** hover states (`-exclusion -opaque`), because hiding the trigger does not fire `mouseout`.
 
-Magnetic elements re-scanned on `pathname` change.
+Menu stick hold distance is `MENU_STICK_RADIUS` (160px) in `src/lib/cursor/constants.js`. `stickDelta` (0.28) is how far the follower can drift toward the mouse while stuck.
 
 ## CSS animations
 

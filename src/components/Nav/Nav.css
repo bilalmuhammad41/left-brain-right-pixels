@@ -152,6 +152,9 @@
   overflow: visible;
   cursor: pointer;
   z-index: 2;
+  /* Extend hit area over the "menu" label (::before has pointer-events: none) */
+  padding-left: 4.5rem;
+  margin-left: -4.5rem;
 }
 
 .nav-menu-stack--open .menu-btn-container {

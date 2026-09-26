@@ -75,8 +75,7 @@ export default function HomeView() {
                 href="https://aeroglobe.io/"
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor-blend="difference"
-                data-cursor-scale="2.8"
+                data-cursor="-exclusion"
                 className="home-hero-link home-hero-link--arrow"
               >
                 Currently at <br /> Aeroglobe
@@ -88,8 +87,7 @@ export default function HomeView() {
                 href="https://www.fiverr.com/mbilal41"
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor-blend="difference"
-                data-cursor-scale="2.8"
+                data-cursor="-exclusion"
                 className="home-hero-link home-hero-link--arrow"
               >
                 Digital Artist

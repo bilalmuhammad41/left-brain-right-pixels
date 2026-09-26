@@ -151,22 +151,21 @@ const Nav = ({ formattedTime }) => {
               <div
                 className="menu-btn-container"
                 onClick={handleMenuClick}
-                data-magnetic={desktopMenuOpen ? "false" : "true"}
-                data-cursor-stick={desktopMenuOpen ? "false" : "true"}
-                data-cursor-scale="5"
-                data-cursor-stick-attach="40"
-                data-cursor-stick-distance="120"
-                data-magnetic-attached="0.15"
-                data-cursor-blend="difference"
+                {...(!desktopMenuOpen && {
+                  "data-cursor": "-exclusion -opaque",
+                  "data-cursor-stick": "#nav-menu-trigger",
+                })}
               >
                 <div
                   className={`menu-btn-track ${desktopMenuOpen ? "menu-button-not-visible" : "menu-button-visible"}` }
                  
                 >
                   <button
+                    id="nav-menu-trigger"
                     type="button"
                     className="menu-button menu-button--hamburger"
                     aria-label="Menu"
+                    data-magnetic="true"
                   >
                     <span className="menu-hamburger" aria-hidden="true">
                       <span className="menu-hamburger__line" />
@@ -183,15 +182,17 @@ const Nav = ({ formattedTime }) => {
             <div
               className={`max-sm:flex hidden menu-btn-container ${mobileMenuBtnVisible ? "menu-button-visible" : "menu-button-not-visible"}`}
               onClick={handleMobileMenuClick}
-              data-cursor-stick={mobileMenuBtnVisible ? "true" : "false"}
-              data-cursor-scale="3"
-              data-cursor-stick-distance="140"
+              {...(mobileMenuBtnVisible && {
+                "data-cursor-stick": "#nav-mobile-menu-trigger",
+                "data-cursor": "-exclusion -opaque",
+              })}
             >
               <button
+                id="nav-mobile-menu-trigger"
                 type="button"
                 className="menu-button menu-button--hamburger"
                 aria-label="Menu"
-                data-magnetic={mobileMenuBtnVisible ? "true" : "false"}
+                data-magnetic="true"
               >
                 <span className="menu-hamburger" aria-hidden="true">
                   <span className="menu-hamburger__line" />

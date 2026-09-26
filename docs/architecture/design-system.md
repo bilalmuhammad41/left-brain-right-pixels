@@ -78,27 +78,28 @@ From `tailwind.config.js`:
 
 ## Interaction attributes (cursor system)
 
-Declare behavior on HTML elements. Parsed by `src/lib/cursor/`.
+Declare behavior on HTML elements. Parsed by [Cuberto Mouse Follower](https://github.com/Cuberto/mouse-follower) via `src/lib/mouseFollower.js`.
 
 | Attribute | Example | Effect |
 |-----------|---------|--------|
-| `data-magnetic` | `"true"` | Element pulls toward cursor |
-| `data-magnetic-strength-x` | `"0.35"` | Horizontal pull (optional) |
-| `data-magnetic-strength-y` | `"0.35"` | Vertical pull (optional) |
-| `data-cursor-stick` | `""` or `"true"` | Cursor sticks to element center |
-| `data-cursor-scale` | `"2.8"` | Cursor diameter multiplier |
-| `data-cursor-blend` | `"difference"` | CSS mix-blend-mode on cursor |
+| `data-cursor` | `"-exclusion"` | Cursor state(s) — CSS classes on `.mf-cursor` |
+| `data-cursor-stick` | `""` | Cursor sticks to element center |
 | `data-cursor-text` | `"View"` | Label shown in cursor |
+| `data-cursor-img` | `"/img.png"` | Image preview in cursor |
+| `data-cursor-video` | `"/clip.mp4"` | Video preview in cursor |
 
-Full API: [src/lib/cursor/README.md](../../src/lib/cursor/README.md)
+Custom states in `src/components/CustomCursor/CustomCursor.css`:
+
+- `-exclusion` — mix-blend-mode exclusion (used on links)
+- `-menu` / `-menu-mobile` — enlarged cursor for nav menu buttons
 
 ### Cursor CSS classes
 
-Defined in `src/components/CustomCursor/CustomCursor.css`:
+Base styles from `mouse-follower/dist/mouse-follower.min.css`. Theme overrides in `src/components/CustomCursor/CustomCursor.css`:
 
-- `.cb-cursor` — root cursor element
-- `.cb-cursor-inner`, `.cb-cursor-text` — inner structure
-- State classes applied by `Cursor.ts` (visible, stick, blend, etc.)
+- `.mf-cursor` — root cursor element
+- `.mf-cursor-text`, `.mf-cursor-media` — inner structure
+- State classes: `-pointer`, `-exclusion`, `-text`, `-hidden`, etc.
 
 ## Motion conventions
 
@@ -132,11 +133,11 @@ Defined in `src/components/CustomCursor/CustomCursor.css`:
 </TransitionLink>
 ```
 
-### Magnetic button
+### Sticky button
 
 ```jsx
-<button data-magnetic="true" data-cursor-stick data-cursor-scale="2.6">
-  Click
+<button data-cursor-stick data-cursor="-menu">
+  Menu
 </button>
 ```
 

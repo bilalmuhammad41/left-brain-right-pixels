@@ -37,4 +37,4 @@ Read [AGENTS.md](../AGENTS.md) before implementing features.
 
 - Architecture: `docs/architecture/overview.md`
 - Animation: `docs/architecture/animation.md`
-- Cursor API: `src/lib/cursor/README.md`
+- Cursor API: [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) + `src/lib/mouseFollower.js`

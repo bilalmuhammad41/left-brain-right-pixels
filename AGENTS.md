@@ -32,7 +32,7 @@ Operating system for AI coding agents working on this repository.
 | Architecture decisions | [docs/decisions/architecture-decisions.md](docs/decisions/architecture-decisions.md) |
 | Redundancy (don't duplicate) | [docs/audits/redundancy-report.md](docs/audits/redundancy-report.md) |
 | Technical debt | [docs/audits/technical-debt.md](docs/audits/technical-debt.md) |
-| Cursor deep API | [src/lib/cursor/README.md](src/lib/cursor/README.md) |
+| Cursor deep API | [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) + `src/lib/mouseFollower.js` |
 
 ---
 
@@ -97,13 +97,12 @@ useEffect(() => {
 }, []);
 ```
 
-### Add magnetic / cursor interaction
+### Add cursor interaction
 
 ```jsx
 <button
-  data-magnetic="true"
   data-cursor-stick
-  data-cursor-scale="2.6"
+  data-cursor="-menu"
 >
   Label
 </button>
