@@ -1,27 +1,27 @@
 const projects = [
   {
-    title: "this is digital",
+    title: "THIS IS DIGITAL",
     slug: "this-is-digital",
     description: "A cinematic digital agency landing page replica",
     link: "https://bilalmuhammad41.github.io/this-is-digital-replica/",
     year: "2022",
   },
   {
-    title: "hoo bank",
+    title: "HOO BANK",
     slug: "hoo-bank",
     description: "Modern fintech landing page with clean UI patterns",
     link: "https://bilalmuhammad41.github.io/fintech_website/",
     year: "2022",
   },
   {
-    title: "nike",
+    title: "NIKE",
     slug: "nike",
     description: "Bold product landing page with dynamic layout",
     link: "https://bilalmuhammad41.github.io/Nike-LandingPage/",
     year: "2022",
   },
   {
-    title: "my todo",
+    title: "MY TODO",
     slug: "my-todo",
     description: "Minimal task manager built with vanilla JavaScript",
     link: "https://bilalmuhammad41.github.io/todo_List/",

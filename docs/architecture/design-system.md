@@ -8,6 +8,7 @@ Semantic tokens, typography, breakpoints, and interaction attributes. Source of 
 
 | Token | Value | Usage |
 |-------|-------|-------|
+| `--primary` | `#daf820` | Brand primary (reuse via `var(--primary)`) |
 | `--yellow-color` | `#FCF55F` | Accent highlight |
 | `--dark-color` | theme-dependent | Inverse accent alias |
 
