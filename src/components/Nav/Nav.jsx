@@ -5,7 +5,6 @@ import { NavItems, MobileNavItems } from "../../constants";
 import TransitionLink from "../PageTransition/TransitionLink";
 import NavRollLink from "./NavRollLink";
 import NavLink from "./NavLink";
-import ThemeToggle from "../Theme/ThemeToggle";
 import { ScrollTrigger, getScrollSmoother } from "@/lib/gsap";
 import "./Nav.css";
 
@@ -179,7 +178,6 @@ const Nav = ({ formattedTime }) => {
           </div>
 
           <div className="nav-actions">
-            {/* <ThemeToggle /> */}
             <div
               className={`max-sm:flex hidden menu-btn-container ${mobileMenuBtnVisible ? "menu-button-visible" : "menu-button-not-visible"}`}
               onClick={handleMobileMenuClick}
@@ -217,7 +215,6 @@ const Nav = ({ formattedTime }) => {
             </TransitionLink>
 
             <div className="mobile-menu-header-actions">
-              <ThemeToggle className="mobile-theme-toggle" />
               <div
                 className={`close-btn-container ${closeBtnVisible ? "close-btn-visible" : "close-btn-not-visible"}`}
                 onClick={closeBtnClick}

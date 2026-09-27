@@ -1,35 +1,56 @@
+import { SITE_URL, markdownUrl, profile } from "@/constants/profile";
 import { withBasePath } from "@/lib/basePath";
 import { getFontFacesCSS } from "@/lib/fontFaces";
 import "./globals.css";
 
 export const metadata = {
-  title: "M Bilal - Web Developer",
-  description: "Portfolio of Muhammad Bilal — Web Developer based in Pakistan",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${profile.name} — Software Engineer`,
+    template: `%s — ${profile.name}`,
+  },
+  description: profile.summary,
+  applicationName: profile.name,
+  authors: [{ name: profile.name, url: `${SITE_URL}/` }],
+  creator: profile.name,
+  publisher: profile.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: profile.name,
+    images: [
+      {
+        url: `${SITE_URL}/Logo.png`,
+        alt: profile.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    images: [`${SITE_URL}/Logo.png`],
+  },
   icons: {
     icon: withBasePath("/Logo.png"),
   },
 };
 
-const themeScript = `
-(function () {
-  try {
-    var stored = localStorage.getItem("theme");
-    var theme =
-      stored ||
-      (window.matchMedia("(prefers-color-scheme: light)").matches
-        ? "light"
-        : "dark");
-    document.documentElement.setAttribute("data-theme", theme);
-  } catch (e) {}
-})();
-`;
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <style dangerouslySetInnerHTML={{ __html: getFontFacesCSS() }} />
+        <link rel="describedby" href={markdownUrl("llms.txt")} />
       </head>
       <body>{children}</body>
     </html>

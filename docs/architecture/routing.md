@@ -100,6 +100,12 @@ sequenceDiagram
 
 Project slugs pre-built via `generateStaticParams()` in `src/app/(site)/projects/[slug]/page.jsx` reading from constants.
 
+## Crawlable HTML
+
+Each exported URL includes only the active view in the first HTML response, plus that route's `<head>` metadata from `page.jsx`. `PageTransitionShell` mounts the other views after a client navigation, so a direct request for `/services/` is not a copy of every page.
+
+Internal `TransitionLink` hrefs include `basePath` and a trailing slash via `publicHref()`, so a crawler following the anchor reaches the GitHub Pages URL.
+
 ## Related
 
 - [overview.md](./overview.md)

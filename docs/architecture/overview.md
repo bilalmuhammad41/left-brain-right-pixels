@@ -33,7 +33,6 @@ flowchart TB
   RootLayout["app/layout.jsx"] --> SiteLayout["app/(site)/layout.jsx"]
   SiteLayout --> SiteShell
   SiteShell --> Splash["SplashScreen"]
-  SiteShell --> Theme["ThemeProvider"]
   SiteShell --> Cursor["CustomCursor"]
   SiteShell --> PTS["PageTransitionShell"]
   PTS --> Nav
@@ -46,12 +45,13 @@ flowchart TB
 
 ### Boot sequence
 
-1. `RootLayout` — theme flash-prevention script, DM Sans `@font-face`, `globals.css`
+1. `RootLayout` — DM Sans `@font-face`, `globals.css`
 2. `SiteLayout` — renders `SiteShell` only (does not render `{children}`)
 3. `SplashScreen` — preloads assets via `preloadAssets`, then exits
-4. `ThemeProvider` — applies `data-theme` on `<html>`
-5. `CustomCursor` — mounts GSAP cursor + magnetic system (desktop only)
-6. `PageTransitionShell` — mounts all views, runs initial enter animation, handles navigation
+4. `CustomCursor` — mounts GSAP cursor + magnetic system (desktop only)
+5. `PageTransitionShell` — renders the active view in the initial HTML, mounts other views on navigation, runs the enter animation after the splash, and handles navigation
+
+The splash covers the viewport, but it does not replace the document. The active page's text is in the first HTML response so crawlers that do not run JavaScript can read it. Inactive views stay out of that document until someone navigates to them.
 
 ## Folder map
 
@@ -73,14 +73,11 @@ public/
 
 ## Providers & state
 
-No Redux/Zustand. Two React contexts:
+No Redux/Zustand. One React context:
 
 | Context | File | Provides |
 |---------|------|----------|
-| Theme | `src/components/Theme/ThemeContext.jsx` | `theme`, `toggleTheme` |
 | PageTransition | `src/components/PageTransition/PageTransitionContext.jsx` | `navigate`, `activeSlug`, `isTransitioning`, `registerPageRef` |
-
-Theme is initialized before hydration via inline script in `app/layout.jsx`.
 
 ## Where to add features
 
@@ -92,7 +89,7 @@ Theme is initialized before hydration via inline script in `app/layout.jsx`.
 | New scroll effect | Use `@/lib/gsap` ScrollTrigger; refresh via `refreshScroll()` |
 | New interactive element | Add cursor `data-*` attributes — see [design-system.md](./design-system.md) |
 | Static content | `src/constants/` |
-| Design tokens | `src/app/globals.css` `:root` / `[data-theme]` |
+| Design tokens | `src/app/globals.css` `:root` |
 
 ## Configuration
 

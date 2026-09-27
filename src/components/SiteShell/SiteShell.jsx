@@ -2,37 +2,30 @@
 
 import { useState, useEffect } from "react";
 import { CustomCursor, Nav, SplashScreen } from "@/components";
-import ThemeProvider from "@/components/Theme/ThemeProvider";
 import PageTransitionShell from "@/components/PageTransition/PageTransitionShell";
 
 export default function SiteShell() {
   const [isLoading, setIsLoading] = useState(true);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(null);
 
   useEffect(() => {
-    const timerId = setInterval(() => setCurrentTime(new Date()), 1000);
+    const updateTime = () => setCurrentTime(new Date());
+    updateTime();
+    const timerId = setInterval(updateTime, 1000);
     return () => clearInterval(timerId);
   }, []);
 
-  const hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
-  const ampm = hours >= 12 ? "PM" : "AM";
-  const formattedTime = `${hours % 12 || 12}:${minutes.toString().padStart(2, "0")} ${ampm}`;
-
-  if (isLoading) {
-    return (
-      <ThemeProvider>
-        <SplashScreen setIsLoading={setIsLoading} />
-      </ThemeProvider>
-    );
-  }
+  const formattedTime = currentTime
+    ? `${currentTime.getHours() % 12 || 12}:${currentTime.getMinutes().toString().padStart(2, "0")} ${currentTime.getHours() >= 12 ? "PM" : "AM"}`
+    : "";
 
   return (
-    <ThemeProvider>
-      <CustomCursor />
-      <PageTransitionShell formattedTime={formattedTime}>
+    <>
+      {!isLoading && <CustomCursor />}
+      <PageTransitionShell formattedTime={formattedTime} introReady={!isLoading}>
         <Nav formattedTime={formattedTime} />
       </PageTransitionShell>
-    </ThemeProvider>
+      {isLoading && <SplashScreen setIsLoading={setIsLoading} />}
+    </>
   );
 }

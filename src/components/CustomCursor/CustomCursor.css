@@ -54,7 +54,7 @@
 }
 
 .cb-cursor--stick .cb-cursor__inner {
-  background: rgb(255, 255, 255);
+  background: var(--text);
 }
 
 .cb-cursor--blend-difference {

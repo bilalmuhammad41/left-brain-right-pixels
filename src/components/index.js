@@ -6,7 +6,6 @@ export { default as CustomCursor } from "./CustomCursor/CustomCursor";
 export { default as HomeHeroLinkArrow } from "./HomeHeroLinkArrow/HomeHeroLinkArrow";
 export { default as ScrollSmootherWrapper } from "./ScrollSmoother/ScrollSmootherWrapper";
 export { default as SiteShell } from "./SiteShell/SiteShell";
-export { default as ThemeToggle } from "./Theme/ThemeToggle";
 export { default as PageTransitionShell } from "./PageTransition/PageTransitionShell";
 export { default as TransitionLink } from "./PageTransition/TransitionLink";
 export { default as PageTitle } from "./PageTransition/PageTitle";

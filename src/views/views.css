@@ -2,6 +2,15 @@
   width: 100%;
 }
 
+.page-lead {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+}
+
 .home-preview {
   padding-block: clamp(3rem, 8vw, 6rem);
   border-top: 1px solid var(--border);

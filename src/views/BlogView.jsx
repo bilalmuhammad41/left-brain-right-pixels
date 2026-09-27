@@ -1,11 +1,15 @@
 import { blogPosts } from "@/constants/blog";
+import { blogIntro } from "@/constants/profile";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
+import { blogJsonLd } from "@/lib/seo";
 import "./views.css";
 
 export default function BlogView() {
   return (
     <div className="view-page">
+      <JsonLd data={blogJsonLd()} />
       <section className="blog section-container">
         <div className="page-header">
           <PageTitle noEndSpace title="99 WAYS" />
@@ -14,6 +18,7 @@ export default function BlogView() {
         </div>
 
         <div className="page-enter-fade">
+        <p className="page-lead">{blogIntro}</p>
         <div className="blog-list">
           {blogPosts.map((post) => (
             <article key={post.slug} className="blog-card">

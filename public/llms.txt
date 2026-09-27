@@ -1,0 +1,27 @@
+# Muhammad Bilal
+
+> Muhammad Bilal is a software engineer with a design practice, based in Pakistan. He builds reliable product interfaces and designs the workflows behind them. His domain is travel and aviation software, and he currently works at Aeroglobe.
+
+Muhammad Bilal is a software engineer with a design practice. He specializes in travel and aviation software and in UI/UX workflow design. He currently works at Aeroglobe.
+
+## Pages
+
+- [Home](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/index.md): Software engineer with a design practice. Muhammad Bilal builds reliable interfaces and UI/UX workflows, including travel and aviation software at Aeroglobe.
+- [Services](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/services.md): Software engineering, design thinking, and UI/UX workflow design for product teams, including travel and aviation software.
+- [Work](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects.md): Selected interface work by Muhammad Bilal, a software engineer who designs and builds the product.
+- [Notes](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/blog.md): Notes from Muhammad Bilal on interface craft, motion, and frontend engineering.
+- [Contact](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/contact.md): Hire Muhammad Bilal for software engineering, UI/UX workflow design, and travel or aviation product work.
+
+## Work
+
+- [THIS IS DIGITAL](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/this-is-digital.md): A cinematic digital agency landing page replica (2022)
+- [HOO BANK](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/hoo-bank.md): Modern fintech landing page with clean UI patterns (2022)
+- [NIKE](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/nike.md): Bold product landing page with dynamic layout (2022)
+- [MY TODO](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/my-todo.md): Minimal task manager built with vanilla JavaScript (2023)
+
+## Profiles
+
+- [Behance](https://www.behance.net/bilalmohammad41): Muhammad Bilal on Behance
+- [Dribbble](https://dribbble.com/bilalmohammad41): Muhammad Bilal on Dribbble
+- [LinkedIn](https://www.linkedin.com/in/bilalmohammad41/): Muhammad Bilal on LinkedIn
+- [GitHub](https://github.com/bilalmuhammad41): Muhammad Bilal on GitHub

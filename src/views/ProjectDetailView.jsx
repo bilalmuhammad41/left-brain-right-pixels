@@ -1,5 +1,7 @@
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
+import { projectJsonLd } from "@/lib/seo";
 import "./ProjectDetailView.css";
 import "./views.css";
 
@@ -8,6 +10,7 @@ export default function ProjectDetailView({ project }) {
 
   return (
     <div className="view-page">
+      <JsonLd data={projectJsonLd(project)} />
       <section className="project-detail section-container">
         <div className="page-header">
           <p className="section-label page-enter-fade">Project</p>

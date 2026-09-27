@@ -2,9 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import HomeHeroLinkArrow from "@/components/HomeHeroLinkArrow/HomeHeroLinkArrow";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
+import ProfileFacts from "@/components/ProfileFacts/ProfileFacts";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
 import { projects } from "@/constants";
+import { homeJsonLd } from "@/lib/seo";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import "@/sections/Home/Home.css";
 import "./views.css";
@@ -59,6 +62,7 @@ export default function HomeView() {
 
   return (
     <div className="view-page">
+      <JsonLd data={homeJsonLd()} />
       <section className="home section-container">
         <div className="home-hero">
           <div className="home-hero-text">
@@ -135,6 +139,8 @@ export default function HomeView() {
           View all projects
         </TransitionLink>
       </section>
+
+      <ProfileFacts />
     </div>
   );
 }

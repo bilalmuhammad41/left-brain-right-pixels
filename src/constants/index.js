@@ -1,3 +1,5 @@
+import { socials } from "./profile.js";
+
 const projects = [
   {
     title: "THIS IS DIGITAL",
@@ -42,33 +44,25 @@ const MobileNavItems = [
   { title: "Services", link: "/services" },
   { title: "Blog", link: "/blog" },
   { title: "Contact", link: "/contact" },
-  { title: "GitHub", link: "https://github.com/bilalmuhammad41" },
-  { title: "LinkedIn", link: "https://www.linkedin.com/in/mbilal41/" },
+  ...socials.map((item) => ({ title: item.name, link: item.link })),
 ];
 
 const skills = [
   {
-    title: "Frontend Development",
+    title: "Software Engineering",
     description:
-      "React, Next.js, and modern JavaScript — interfaces built for performance and scalability.",
+      "Reliable product engineering in React and Next.js. Interfaces built to stay clear and maintainable after launch.",
   },
   {
-    title: "UI/UX Design",
+    title: "UI/UX Workflow Design",
     description:
-      "Thoughtful layouts, motion, and typography that turn ideas into memorable digital experiences.",
+      "Design thinking applied to real workflows. He maps the steps a person takes, then designs the interface around that path.",
   },
   {
-    title: "Creative Direction",
+    title: "Travel and Aviation",
     description:
-      "Digital art and visual storytelling — bridging creativity with clean, functional code.",
+      "Software for travel and aviation products, from the booking flow to the operational interface. Currently at Aeroglobe.",
   },
-];
-
-const socials = [
-  { name: "linkedin", link: "https://www.linkedin.com/in/mbilal41/" },
-  { name: "instagram", link: "https://www.instagram.com/muhammadbilal41/" },
-  { name: "github", link: "https://github.com/bilalmuhammad41" },
-  { name: "facebook", link: "https://www.facebook.com/its.bilal.here/" },
 ];
 
 export { projects, NavItems, MobileNavItems, skills, socials };

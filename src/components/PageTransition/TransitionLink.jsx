@@ -1,7 +1,8 @@
 "use client";
 
-import { usePageTransition } from "./PageTransitionContext";
+import { publicHref } from "@/lib/basePath";
 import { isInternalPath } from "@/lib/slug";
+import { usePageTransition } from "./PageTransitionContext";
 
 const TransitionLink = ({
   href,
@@ -25,8 +26,14 @@ const TransitionLink = ({
   };
 
   return (
-    <a data-cursor-blend="difference"
-    data-cursor-scale="2.8" href={href} className={className} onClick={handleClick} {...props}>
+    <a
+      data-cursor-blend="difference"
+      data-cursor-scale="2.8"
+      href={publicHref(href)}
+      className={className}
+      onClick={handleClick}
+      {...props}
+    >
       {children}
     </a>
   );

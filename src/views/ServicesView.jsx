@@ -1,12 +1,16 @@
 import { skills } from "@/constants";
+import { servicesIntro } from "@/constants/profile";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
+import { servicesJsonLd } from "@/lib/seo";
 import "@/sections/Skills/Skills.css";
 import "./views.css";
 
 export default function ServicesView() {
   return (
     <div className="view-page">
+      <JsonLd data={servicesJsonLd()} />
       <section className="skills section-container">
         <div className="page-header">
           <PageTitle title="SERIOUS" />
@@ -14,10 +18,7 @@ export default function ServicesView() {
         </div>
 
         <div className="page-enter-fade">
-        <p className="skills-subtitle">
-          From motion-driven interfaces to performant web apps — I design and
-          build digital experiences for the modern web.
-        </p>
+        <p className="skills-subtitle">{servicesIntro}</p>
 
         <div className="skills-grid">
           {skills.map((skill, index) => (

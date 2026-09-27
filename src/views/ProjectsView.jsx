@@ -1,13 +1,17 @@
 import { projects } from "@/constants";
+import { projectsIntro } from "@/constants/profile";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
 import { getProjectDetailSlug } from "@/lib/projects";
+import { projectsJsonLd } from "@/lib/seo";
 import "@/sections/Projects/Projects.css";
 import "./views.css";
 
 export default function ProjectsView() {
   return (
     <div className="view-page">
+      <JsonLd data={projectsJsonLd()} />
       <section className="projects section-container">
         <div className="page-header">
           <PageTitle title="MY" />
@@ -15,6 +19,7 @@ export default function ProjectsView() {
         </div>
 
         <div className="page-enter-fade">
+          <p className="page-lead">{projectsIntro}</p>
           <div className="projects-list">
             {projects.map((project, index) => (
               <TransitionLink

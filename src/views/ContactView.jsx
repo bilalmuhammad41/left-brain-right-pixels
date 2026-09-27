@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import { interestOptions } from "@/constants/blog";
+import { contactIntro } from "@/constants/profile";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
+import { contactJsonLd } from "@/lib/seo";
 import "./ContactView.css";
+import "./views.css";
 
 export default function ContactView() {
   const [interests, setInterests] = useState([]);
@@ -25,6 +29,7 @@ export default function ContactView() {
 
   return (
     <div className="view-page">
+      <JsonLd data={contactJsonLd()} />
       <section className="contact section-container">
         <div className="page-header contact-intro">
           <PageTitle
@@ -32,6 +37,8 @@ export default function ContactView() {
             className="contact-headline page-title"
           />
         </div>
+
+        <p className="page-lead page-enter-fade">{contactIntro}</p>
 
         <form className="contact-form page-enter-fade" onSubmit={handleSubmit} noValidate>
           <fieldset className="contact-fieldset">

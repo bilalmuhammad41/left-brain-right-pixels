@@ -26,7 +26,7 @@ import TransitionCurtain from "./TransitionCurtain";
 import TransitionOverlay from "./TransitionOverlay";
 import "./PageViews.css";
 
-const PageTransitionShell = ({ formattedTime, children }) => {
+const PageTransitionShell = ({ formattedTime, children, introReady = true }) => {
   const pathname = usePathname();
   const router = useRouter();
   const curtainRef = useRef(null);
@@ -37,6 +37,7 @@ const PageTransitionShell = ({ formattedTime, children }) => {
   const isTransitioningRef = useRef(false);
 
   const [activeSlug, setActiveSlug] = useState(() => normalizeSlug(pathname));
+  const [renderedSlugs, setRenderedSlugs] = useState(() => [normalizeSlug(pathname)]);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const registerPageRef = useCallback((slug, ref) => {
@@ -51,6 +52,31 @@ const PageTransitionShell = ({ formattedTime, children }) => {
       rootEl: pageRef.rootRef?.current ?? null,
     };
   };
+
+  const ensureRendered = useCallback((slug) => {
+    setRenderedSlugs((current) =>
+      current.includes(slug) ? current : [...current, slug]
+    );
+  }, []);
+
+  const waitForPage = useCallback((slug) => {
+    return new Promise((resolve) => {
+      let attempts = 0;
+
+      const tick = () => {
+        const { contentEl } = getPageElements(slug);
+        if (contentEl || attempts >= 30) {
+          resolve(contentEl);
+          return;
+        }
+
+        attempts += 1;
+        requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    });
+  }, []);
 
   const playEnter = useCallback((slug, { skipCurtain = false } = {}) => {
     return new Promise((resolve) => {
@@ -85,6 +111,8 @@ const PageTransitionShell = ({ formattedTime, children }) => {
       setIsTransitioning(true);
       setScrollPaused(true);
 
+      ensureRendered(toSlug);
+      await waitForPage(toSlug);
       await slideCurtainUp(curtainRef.current, overlayRef.current);
 
       skipPathSync.current = true;
@@ -105,7 +133,7 @@ const PageTransitionShell = ({ formattedTime, children }) => {
       isTransitioningRef.current = false;
       setIsTransitioning(false);
     },
-    [playEnter, router]
+    [ensureRendered, playEnter, router, waitForPage]
   );
 
   const navigate = useCallback(
@@ -131,6 +159,8 @@ const PageTransitionShell = ({ formattedTime, children }) => {
     if (slug === activeSlug && hasPlayedInitial.current) return;
 
     if (!hasPlayedInitial.current) {
+      if (!introReady) return;
+
       let cancelled = false;
       let attempts = 0;
       const maxAttempts = 30;
@@ -177,7 +207,7 @@ const PageTransitionShell = ({ formattedTime, children }) => {
 
       return () => cancelAnimationFrame(frame);
     }
-  }, [pathname, activeSlug, playEnter, runTransition]);
+  }, [pathname, activeSlug, introReady, playEnter, runTransition]);
 
   const contextValue = {
     navigate,
@@ -192,7 +222,9 @@ const PageTransitionShell = ({ formattedTime, children }) => {
       <ScrollSmootherWrapper>
         <main className="main w-full bg-[var(--bg)]">
           <div className="site-views">
-            {Object.entries(PAGE_REGISTRY).map(([slug, entry]) => {
+            {renderedSlugs.map((slug) => {
+              const entry = PAGE_REGISTRY[slug];
+              if (!entry) return null;
               const View = entry.component;
               return (
                 <PageView
