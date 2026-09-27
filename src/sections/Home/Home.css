@@ -69,7 +69,7 @@
   align-items: flex-start;
   width: 100%;
   margin: 0;
-  font-size: clamp(1.7rem, 7.4vw, 7.75rem);
+  font-size: clamp(2.1rem, 7.4vw, 7.75rem);
   font-weight: 900;
   letter-spacing: -0.045em;
   line-height: 0.85;
