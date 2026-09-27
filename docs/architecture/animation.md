@@ -155,7 +155,7 @@ const destroyMagnetic = initMagneticElements(document, {
 | `data-cursor-blend` | Blend mode (e.g. `difference`) |
 | `data-cursor-text` | Show label text |
 
-`TransitionLink` sets `data-cursor-blend="difference"` and `data-cursor-scale="2.8"` by default.
+`TransitionLink` sets `data-cursor-scale="2.8"` by default.
 
 ### Events
 

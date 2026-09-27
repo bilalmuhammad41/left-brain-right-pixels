@@ -107,7 +107,7 @@ export default function HomeView() {
           <div ref={circleRef} className="home-intro-circle" aria-hidden="true" />
           <div className="overflow-hidden home-intro-text-wrap">
             <p className="home-intro-statement page-enter-fade">
-              The technical horsepower of a software engineer with the taste of a designer.
+             An engineer who speaks fluent design.
             </p>
           </div>
         </div>

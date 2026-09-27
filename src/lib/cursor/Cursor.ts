@@ -493,7 +493,9 @@ export class Cursor {
   }
 
   private applyBlendMode(mode: string): void {
+    this.removeBlendClasses();
     this.rootEl.classList.add(`${CSS_CLASSES.BLEND_PREFIX}${mode}`);
+    this.rootEl.style.mixBlendMode = mode;
   }
 
   private removeBlendClasses(): void {
@@ -503,6 +505,7 @@ export class Cursor {
         this.rootEl.classList.remove(cls);
       }
     }
+    this.rootEl.style.mixBlendMode = "";
   }
 
   private syncBlendState(): void {

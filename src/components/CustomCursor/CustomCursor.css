@@ -22,7 +22,7 @@
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: rgb(0, 0, 0);
+  background: var(--primary);
   will-change: transform, width, height;
 }
 
@@ -37,7 +37,7 @@
   justify-content: center;
   transform: translate(-50%, -50%) scale(0) rotate(10deg);
   opacity: 0;
-  color: var(--bg);
+  color: var(--dark-color);
   font-size: 0.75rem;
   line-height: 1;
   text-align: center;
@@ -54,20 +54,25 @@
 }
 
 .cb-cursor--stick .cb-cursor__inner {
-  background: var(--text);
+  background: var(--primary);
 }
 
+/* mix-blend-mode is set inline from data-cursor-blend (see Cursor.ts). */
 .cb-cursor--blend-difference {
   mix-blend-mode: difference;
 }
 
-.cb-cursor--blend-difference .cb-cursor__inner {
-  background: rgba(255, 255, 255, 0.85);
+.cb-cursor--blend-screen {
+  mix-blend-mode: screen;
+}
+
+.cb-cursor--blend-overlay {
+  mix-blend-mode: overlay;
 }
 
 .cb-cursor--text .cb-cursor__inner {
-  background: var(--text);
-  border-color: var(--text);
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .cb-cursor--text .cb-cursor__text {
