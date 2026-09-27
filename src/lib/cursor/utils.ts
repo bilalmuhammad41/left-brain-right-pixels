@@ -92,6 +92,16 @@ export function isStickEnabled(el: HTMLElement): boolean {
 }
 
 /**
+ * Hidden elements (for example a desktop-only control set to
+ * `display: none`) report a zero box at the viewport origin. Treating
+ * that point as a stick center pins the cursor to the top-left corner.
+ */
+export function hasLayoutBox(el: HTMLElement): boolean {
+  const rect = el.getBoundingClientRect();
+  return rect.width > 0 && rect.height > 0;
+}
+
+/**
  * Walks up from `el` to find the nearest ancestor (inclusive) that has
  * `data-cursor-stick` enabled. Returns `null` if none found.
  */

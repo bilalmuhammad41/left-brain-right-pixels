@@ -1,10 +1,10 @@
 .home {
-  min-height: 100svh;
+  min-height: calc(100svh - 15.5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: clamp(5rem, 12vw, 8rem);
-  padding-bottom: clamp(3rem, 8vw, 6rem);
+  padding-top: clamp(1.25rem, 3vw, 2.25rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
 }
 
 .home-hero {
@@ -12,22 +12,131 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: stretch;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.home-hero-meta,
+.home-hero-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  width: 100%;
+}
+
+.home-hero-kicker,
+.home-hero-scroll {
+  display: inline-flex;
   align-items: center;
-  gap: clamp(3rem, 8vw, 6rem);
+  gap: 0.55em;
+  margin: 0;
+  font-size: clamp(0.65rem, 0.85vw, 0.78rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.home-hero-scroll {
+  flex-shrink: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.home-hero-dot {
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background-color: var(--text);
+  flex-shrink: 0;
+}
+
+.home-hero-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  width: 100%;
 }
 
 .home-headline-wrap {
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(1.7rem, 7.4vw, 7.75rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.85;
+}
+
+.home-headline-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.22em;
+  max-width: 100%;
 }
 
 .home-headline.page-title {
-  justify-content: center;
+  justify-content: flex-start;
   text-align: left;
-  font-size: clamp(2.5rem, 8vw, 10rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  max-width: 14ch;
+  flex-wrap: nowrap;
+  font-size: 1em;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  width: auto;
+  max-width: 100%;
+}
+
+.home-hero-pill {
+  display: block;
+  height: 0.62em;
+  aspect-ratio: 2.2 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  top: -0.08em;
+}
+
+.home-hero-pill-image {
+  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-hero-pill-image--portrait {
+  object-position: 58% 18%;
+}
+
+.home-hero-pill-image--scene {
+  object-position: 12% 42%;
+}
+
+.home-hero-summary {
+  max-width: 28rem;
+  margin: 0;
+  font-size: clamp(0.8rem, 1.05vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+.home-hero-summary-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.home-headline .page-title-letter {
+  padding-bottom: 0.145em;
 }
 
 .home-intro {
@@ -63,30 +172,6 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
-}
-
-.home-hero-footer {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
-
-.home-hero-footer > :first-child {
-  justify-self: start;
-}
-
-.home-hero-footer > :nth-child(2) {
-  justify-self: center;
-}
-
-.home-hero-footer > :last-child {
-  justify-self: end;
-}
-
-.home-hero-footer > :is(:first-child, :nth-child(2)) {
-  overflow: visible;
 }
 
 .home-hero-link {
@@ -149,15 +234,15 @@
 .home-intro-section {
   --intro-pill-height: clamp(12rem, min(40vw, 40svh), 31.25rem);
   --intro-pill-max-width: 80vw;
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--dark-color);
+  color: var(--bg-elevated);
   padding-block: clamp(4rem, 12vw, 8rem);
 }
 
 .home-intro-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .home-intro-circle {
@@ -166,7 +251,9 @@
   max-width: var(--intro-pill-max-width);
   border-radius: 9999px;
   margin-bottom: clamp(3rem, 8vw, 5rem);
+  margin-left: auto;
   flex-shrink: 0;
+  align-self: flex-end;
   background-color: var(--yellow-color);
   will-change: width;
 }
@@ -204,14 +291,10 @@
 }
 
 @media (max-width: 640px) {
+  .home-hero-meta,
   .home-hero-footer {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    gap: 1.25rem;
-  }
-
-  .home-hero-footer > :nth-child(2),
-  .home-hero-footer > :last-child {
-    justify-self: start;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
   }
 }

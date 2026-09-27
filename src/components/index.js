@@ -4,6 +4,7 @@ export { default as NavRollLink } from "./Nav/NavRollLink";
 export { default as SplashScreen } from "./Splash Screen/SplashScreen";
 export { default as CustomCursor } from "./CustomCursor/CustomCursor";
 export { default as HomeHeroLinkArrow } from "./HomeHeroLinkArrow/HomeHeroLinkArrow";
+export { default as Logo } from "./Logo/Logo";
 export { default as ScrollSmootherWrapper } from "./ScrollSmoother/ScrollSmootherWrapper";
 export { default as SiteShell } from "./SiteShell/SiteShell";
 export { default as PageTransitionShell } from "./PageTransition/PageTransitionShell";

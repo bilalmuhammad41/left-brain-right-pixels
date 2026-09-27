@@ -15,10 +15,17 @@
 }
 
 .nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 400;
   color: var(--text);
   text-decoration: none;
+}
+
+.nav-logo-mark {
+  height: 1.35em;
 }
 
 .nav-logo-dark {
@@ -114,7 +121,7 @@
 }
 
 .menu-btn-track .menu-button--hamburger::before {
-  content: "menu";
+  content: "";
   position: absolute;
   left: -4rem;
   top: 55%;

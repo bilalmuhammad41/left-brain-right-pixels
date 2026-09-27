@@ -41,7 +41,7 @@ export const metadata = {
     images: [`${SITE_URL}/Logo.png`],
   },
   icons: {
-    icon: withBasePath("/Logo.png"),
+    icon: withBasePath("/logo.svg"),
   },
 };
 

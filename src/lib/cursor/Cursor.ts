@@ -42,6 +42,7 @@ import {
   getDistanceFromElementCenter,
   isPointInsideElement,
   isStickEnabled,
+  hasLayoutBox,
   readBlendMode,
   readNumericAttribute,
   lerp,
@@ -233,6 +234,10 @@ export class Cursor {
   private render(): void {
     if (!this.isVisible) return;
 
+    if (this.stickTarget && !hasLayoutBox(this.stickTarget)) {
+      this.releaseStick();
+    }
+
     if (this.stickTarget) {
       this.checkStickRelease();
     } else {
@@ -412,7 +417,7 @@ export class Cursor {
     let nearestDistance = Infinity;
 
     for (const el of candidates) {
-      if (!isStickEnabled(el)) continue;
+      if (!isStickEnabled(el) || !hasLayoutBox(el)) continue;
       const attachDist = readNumericAttribute(
         el,
         DATA_ATTRS.CURSOR_STICK_ATTACH,
