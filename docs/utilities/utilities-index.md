@@ -131,7 +131,7 @@ Framework-agnostic GSAP cursor system. **Full API:** [src/lib/cursor/README.md](
 |--------|---------|
 | `SITE_URL` | Canonical portfolio origin, including the GitHub Pages base path |
 | `profile` | Name, summary, role, and Aeroglobe relationship used in visible copy and JSON-LD |
-| `faqs` | Visible question-and-answer copy. Schema must use these same strings |
+| `faqs` | Question-and-answer copy for the home markdown twin. Not rendered on the page |
 | `sitePages` | Per-route title, description, and markdown twin |
 | `socials` | Profile URLs for `sameAs` and footer links |
 | `absoluteUrl(path)` | Canonical HTML URL with trailing slash |

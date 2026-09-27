@@ -5,6 +5,7 @@ export { default as SplashScreen } from "./Splash Screen/SplashScreen";
 export { default as CustomCursor } from "./CustomCursor/CustomCursor";
 export { default as HomeHeroLinkArrow } from "./HomeHeroLinkArrow/HomeHeroLinkArrow";
 export { default as Logo } from "./Logo/Logo";
+export { default as Footer } from "./Footer/Footer";
 export { default as ScrollSmootherWrapper } from "./ScrollSmoother/ScrollSmootherWrapper";
 export { default as SiteShell } from "./SiteShell/SiteShell";
 export { default as PageTransitionShell } from "./PageTransition/PageTransitionShell";

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { profile_picture } from "@/assets";
 import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
-import ProfileFacts from "@/components/ProfileFacts/ProfileFacts";
+import Footer from "@/components/Footer/Footer";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
 import { projects } from "@/constants";
 import { profile } from "@/constants/profile";
@@ -138,7 +138,7 @@ export default function HomeView() {
         </TransitionLink>
       </section>
 
-      <ProfileFacts />
+      <Footer />
     </div>
   );
 }

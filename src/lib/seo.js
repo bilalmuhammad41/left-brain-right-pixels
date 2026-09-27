@@ -3,7 +3,6 @@ import {
   PROFILE_UPDATED,
   SITE_URL,
   absoluteUrl,
-  faqs,
   markdownUrl,
   profile,
   servicesIntro,
@@ -137,19 +136,6 @@ export function homeJsonLd() {
       title: page.title,
       description: page.description,
     }),
-    {
-      "@type": "FAQPage",
-      "@id": `${absoluteUrl("/")}#faq`,
-      url: absoluteUrl("/"),
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
-    },
   ]);
 }
 
