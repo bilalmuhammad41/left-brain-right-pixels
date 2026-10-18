@@ -8,6 +8,7 @@ export const socials = [
   { name: "Behance", link: "https://www.behance.net/bilalmohammad41" },
   { name: "Dribbble", link: "https://dribbble.com/bilalmohammad41" },
   { name: "LinkedIn", link: "https://www.linkedin.com/in/bilalmohammad41/" },
+  { name: "Fiverr", link: "https://www.fiverr.com/users/mbilal41/" },
   { name: "GitHub", link: "https://github.com/bilalmuhammad41" },
 ];
 
