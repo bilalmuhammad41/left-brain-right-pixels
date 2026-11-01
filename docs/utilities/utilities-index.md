@@ -58,6 +58,10 @@ Shared utilities in `src/lib/`, `src/constants/`, `src/assets/`, and `src/lib/cu
 |--------|---------|----------|
 | `getProjectBySlug(slug)` | Find project in constants | Project detail lookup |
 | `getProjectDetailSlug(project)` | Build `/projects/{slug}` path | Project card links |
+| `getNextProject(project)` | Next project in the list, wrapping to the first | Project detail “next” link |
+| `getProjectSections(project)` | Ordered detail-page sections (`media`, `text`, `gallery`) from `project.sections`, or a generic placeholder layout | Per-project show/hide/reorder of detail content |
+
+Project images live in `public/project-assets/{slug}/` and are referenced by public path (`/project-assets/...`) in `src/constants/index.js`. `project.thumbnail` feeds the Projects list card.
 
 ---
 

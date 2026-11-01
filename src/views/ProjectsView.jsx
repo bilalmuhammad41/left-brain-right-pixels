@@ -3,6 +3,7 @@ import { projectsIntro } from "@/constants/profile";
 import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
+import { withBasePath } from "@/lib/basePath";
 import { getProjectDetailSlug } from "@/lib/projects";
 import { projectsJsonLd } from "@/lib/seo";
 import "@/sections/Projects/Projects.css";
@@ -29,9 +30,21 @@ export default function ProjectsView() {
               >
                 <div className="project-card-visual">
                   <div className="project-card-placeholder">
-                    <span className="project-card-index">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                    {project.thumbnail ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className="project-card-image"
+                        src={withBasePath(project.thumbnail.src)}
+                        alt={project.thumbnail.alt ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                      />
+                    ) : (
+                      <span className="project-card-index">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="project-card-info">

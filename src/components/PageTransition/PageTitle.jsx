@@ -1,10 +1,15 @@
 "use client";
 
-export function PageTitle({ title, className = "", noEndSpace = false }) {
+export function PageTitle({
+  title,
+  className = "",
+  noEndSpace = false,
+  as: Tag = "h1",
+}) {
   const words = (title || "").split(" ");
 
   return (
-    <h1
+    <Tag
       className={`page-title ${noEndSpace ? "page-title--no-end-space" : ""} ${className}`.trim()}
       aria-label={title}
     >
@@ -27,7 +32,7 @@ export function PageTitle({ title, className = "", noEndSpace = false }) {
           </span>
         );
       })}
-    </h1>
+    </Tag>
   );
 }
 

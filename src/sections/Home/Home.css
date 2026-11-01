@@ -256,6 +256,8 @@
   align-self: flex-end;
   background-color: var(--yellow-color);
   will-change: width;
+  margin-right: 7%;
+
 }
 
 .home-intro-text-wrap {
