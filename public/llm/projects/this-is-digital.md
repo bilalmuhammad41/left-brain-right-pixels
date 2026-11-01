@@ -2,7 +2,7 @@
 
 Canonical page: https://bilalmuhammad41.github.io/left-brain-right-pixels/projects/this-is-digital/
 
-A cinematic digital agency landing page replica
+A digital agency landing page recreation
 
 - Year: 2022
 - Role: Design and development
