@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { blogPosts } from "../src/constants/blog.js";
@@ -204,6 +204,15 @@ await write(sitePages.contact.markdown, contactMarkdown());
 
 for (const project of projects) {
   await write(`llm/projects/${project.slug}.md`, projectMarkdown(project));
+}
+
+const projectDir = path.join(publicDir, "llm", "projects");
+const liveSlugs = new Set(projects.map((project) => `${project.slug}.md`));
+
+for (const name of await readdir(projectDir)) {
+  if (name.endsWith(".md") && !liveSlugs.has(name)) {
+    await rm(path.join(projectDir, name));
+  }
 }
 
 console.log(`Wrote discovery files for ${SITE_URL}`);
