@@ -16,21 +16,15 @@
 
 1. `@tailwind base/components/utilities`
 2. `:root` accent aliases (`--yellow-color`)
-3. Theme tokens on `:root` / `[data-theme="dark"]` and `[data-theme="light"]`
+3. Color tokens on `:root` (single light palette)
 4. Base reset (`*, body, html`)
 5. ScrollSmoother layout (`#smooth-wrapper`, `#smooth-content`)
 6. Shared section utilities
 7. Interaction utilities (underline, link-arrow, reveal)
 
-## Theme switching
+## Color
 
-Mechanism: `data-theme="light"|"dark"` on `<html>`
-
-| Source        | File                                     |
-| ------------- | ---------------------------------------- |
-| Pre-hydration | Inline script in `src/app/layout.jsx`    |
-| Runtime       | `src/components/Theme/ThemeProvider.jsx` |
-| Persistence   | `localStorage.theme`                     |
+The site uses one light palette. Tokens live on `:root` in `src/app/globals.css`. There is no theme switch.
 
 All semantic colors use CSS variables — never hardcode `#161616` / `#ffffff` in new components.
 

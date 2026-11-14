@@ -1,0 +1,29 @@
+# Muhammad Bilal
+
+> Muhammad Bilal is a software engineer with a design practice, based in Pakistan. He builds reliable product interfaces and designs the workflows behind them. His domain is travel and aviation software, and he currently works at Aeroglobe.
+
+Muhammad Bilal is a software engineer with a design practice. He specializes in travel and aviation software and in UI/UX workflow design. He currently works at Aeroglobe.
+
+## Pages
+
+- [Home](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/index.md): Software engineer with a design practice. Muhammad Bilal builds reliable interfaces and UI/UX workflows, including travel and aviation software at Aeroglobe.
+- [Services](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/services.md): Software engineering, design thinking, and UI/UX workflow design for product teams, including travel and aviation software.
+- [Work](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects.md): Selected interface work by Muhammad Bilal, a software engineer who designs and builds the product.
+- [Notes](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/blog.md): Notes from Muhammad Bilal on interface craft, motion, and frontend engineering.
+- [Contact](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/contact.md): Hire Muhammad Bilal for software engineering, UI/UX workflow design, and travel or aviation product work.
+
+## Work
+
+- [BLANX](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/blanx.md): Custom apparel shop with a generative art studio built in (2024)
+- [LINKLATER](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/linklater.md): A one-page way to ask a friend out, built around Richard Linklater (2024)
+- [SMARTCHOICE](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/smartchoice.md): Insurance comparison for car, bike, health, and travel cover in Pakistan (2024)
+- [SEEDINOV](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/seedinov.md): Studio site for custom software, AI products, and shipped case studies (2024)
+- [THIS IS DIGITAL](https://bilalmuhammad41.github.io/left-brain-right-pixels/llm/projects/this-is-digital.md): A digital agency landing page recreation (2022)
+
+## Profiles
+
+- [Behance](https://www.behance.net/bilalmohammad41): Muhammad Bilal on Behance
+- [Dribbble](https://dribbble.com/bilalmohammad41): Muhammad Bilal on Dribbble
+- [LinkedIn](https://www.linkedin.com/in/bilalmohammad41/): Muhammad Bilal on LinkedIn
+- [Fiverr](https://www.fiverr.com/users/mbilal41/): Muhammad Bilal on Fiverr
+- [GitHub](https://github.com/bilalmuhammad41): Muhammad Bilal on GitHub

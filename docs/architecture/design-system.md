@@ -8,27 +8,11 @@ Semantic tokens, typography, breakpoints, and interaction attributes. Source of 
 
 | Token | Value | Usage |
 |-------|-------|-------|
+| `--primary` | `#daf820` | Brand primary (reuse via `var(--primary)`) |
 | `--yellow-color` | `#FCF55F` | Accent highlight |
-| `--dark-color` | theme-dependent | Inverse accent alias |
+| `--dark-color` | `#161616` | Inverse accent alias |
 
-### Dark theme (`:root`, `[data-theme="dark"]`)
-
-| Token | Value |
-|-------|-------|
-| `--bg` | `#161616` |
-| `--bg-elevated` | `#1e1e1e` |
-| `--text` | `#ffffff` |
-| `--text-muted` | `#8a8a8a` |
-| `--text-dim` | `#5a5a5a` |
-| `--border` | `rgba(255,255,255,0.12)` |
-| `--accent` | `#ffffff` |
-| `--overlay-scrim` | `rgba(0,0,0,0.62)` |
-| `--curtain-shadow` | `0 -28px 80px rgba(0,0,0,0.55)` |
-| `--mobile-menu-bg` | `#a0a1a3` |
-| `--mobile-menu-text` | `#000000` |
-| `--mobile-menu-border` | `rgba(0,0,0,0.15)` |
-
-### Light theme (`[data-theme="light"]`)
+### Palette
 
 | Token | Value |
 |-------|-------|
@@ -78,7 +62,7 @@ From `tailwind.config.js`:
 
 ## Interaction attributes (cursor system)
 
-Declare behavior on HTML elements. Parsed by [Cuberto Mouse Follower](https://github.com/Cuberto/mouse-follower) via `src/lib/mouseFollower.js`.
+Declare behavior on HTML elements. Parsed by [Cuberto Mouse Follower](https://github.com/Cuberto/mouse-follower) via `src/lib/cursor/mouseFollower.js`.
 
 | Attribute | Example | Effect |
 |-----------|---------|--------|

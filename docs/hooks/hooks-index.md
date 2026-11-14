@@ -29,22 +29,6 @@ Custom React hooks in this repository. No `@gsap/react` or third-party hook libr
 
 ---
 
-## useTheme
-
-| Field | Value |
-|-------|-------|
-| Path | `src/components/Theme/ThemeContext.jsx` |
-| Purpose | Read and toggle light/dark theme |
-| Parameters | none |
-| Returns | `{ theme: "light" \| "dark", toggleTheme: () => void }` |
-| Side effects | none (reads context; toggle handled by provider) |
-| Dependencies | `ThemeProvider` ancestor |
-| Consumers | `ThemeToggle.jsx` only |
-| Duplicate logic | none |
-| Improvements | Re-enable `ThemeToggle` in Nav when theme switching is desired |
-
----
-
 ## useIsClient
 
 | Field | Value |
@@ -76,10 +60,9 @@ export function useIsClient() {
 ## Hook usage rules
 
 1. **Navigation** — use `usePageTransition` via `TransitionLink`; do not create alternate routing hooks
-2. **Theme** — use `useTheme`; do not read `localStorage.theme` directly in components
-3. **Client detection** — prefer `useIsClient` over inline `typeof window` checks (once adopted)
-4. **GSAP in components** — use `useEffect` + `gsap.context()` cleanup pattern (see `ScrollSmootherWrapper`, `HomeView`); no dedicated GSAP hook exists yet
-5. **New hooks** — add to this index; place in `src/lib/` if framework-agnostic, or next to the feature component if context-specific
+2. **Client detection** — prefer `useIsClient` over inline `typeof window` checks (once adopted)
+3. **GSAP in components** — use `useEffect` + `gsap.context()` cleanup pattern (see `ScrollSmootherWrapper`, `HomeView`); no dedicated GSAP hook exists yet
+4. **New hooks** — add to this index; place in `src/lib/` if framework-agnostic, or next to the feature component if context-specific
 
 ## Related
 

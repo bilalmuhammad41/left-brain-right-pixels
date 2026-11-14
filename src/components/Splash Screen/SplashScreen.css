@@ -1,3 +1,38 @@
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.splash-panel {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.splash-track {
+  position: relative;
+  width: 80px;
+  height: 2px;
+  margin-inline: 1.25rem;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.splash-track-fill {
+  position: absolute;
+  z-index: 3;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+  transition: width 150ms ease-out;
+}
+
 .splash-visible{
   transform: scaleY(1);
   transition: transform 600ms cubic-bezier(.25,1.08,.68,.98);

@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import HomeHeroLinkArrow from "@/components/HomeHeroLinkArrow/HomeHeroLinkArrow";
+import { profile_picture } from "@/assets";
+import JsonLd from "@/components/JsonLd/JsonLd";
 import PageTitle from "@/components/PageTransition/PageTitle";
+import Footer from "@/components/Footer/Footer";
 import TransitionLink from "@/components/PageTransition/TransitionLink";
 import { projects } from "@/constants";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { profile } from "@/constants/profile";
+import { homeJsonLd } from "@/lib/seo";
+import { gsap, getScrollSmoother, ScrollTrigger } from "@/lib/gsap";
 import "@/sections/Home/Home.css";
 import "./views.css";
 
@@ -54,45 +58,45 @@ export default function HomeView() {
       ctx.revert();
     };
   }, []);
-
   const featured = projects.slice(0, 3);
 
   return (
     <div className="view-page">
+      <JsonLd data={homeJsonLd()} />
       <section className="home section-container">
         <div className="home-hero">
-          <div className="home-hero-text">
-            <div className="home-headline-wrap">
-              <PageTitle title="PIXELS" className="home-headline" />
-              <PageTitle title="WITH" className="home-headline" />
-              <PageTitle title="PURPOSE" className="home-headline" />
-            </div>
+          <div className="home-hero-meta page-enter-fade">
+            <p className="home-hero-kicker">
+              <span className="home-hero-dot" aria-hidden="true" />
+              {profile.name} — {profile.jobTitle}
+            </p>
+            <p className="home-hero-kicker">Portfolio — 2026</p>
           </div>
 
-          <div className="home-hero-footer">
-            <div className="overflow-hidden page-enter-fade">
-              <a
-                href="https://aeroglobe.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="-exclusion"
-                className="home-hero-link home-hero-link--arrow"
-              >
-                Currently at <br /> Aeroglobe
-                <HomeHeroLinkArrow />
-              </a>
+          <div className="home-hero-main">
+            <div className="home-headline-wrap">
+              <div className="home-headline-line">
+                <PageTitle title="I engineer" className="home-headline" />
+                <span className="home-hero-pill page-enter-fade">
+                  <img
+                    src={profile_picture}
+                    alt=""
+                    className="home-hero-pill-image home-hero-pill-image--portrait"
+                  />
+                </span>
+              </div>
+              <div className="home-headline-line">
+                <PageTitle title="products with taste" className="home-headline" />
+                
+              </div>
             </div>
-            <div className="overflow-hidden page-enter-fade">
-              <a
-                href="https://www.fiverr.com/mbilal41"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="-exclusion"
-                className="home-hero-link home-hero-link--arrow"
-              >
-                Digital Artist
-                <HomeHeroLinkArrow />
-              </a>
+
+            <div className="home-hero-footer">
+              <p className="home-hero-summary page-enter-fade">
+               I build interfaces that look good and feel effortless to use. <br/>I do the thinking so your users don&apos;t have to.
+                
+              </p>
+              
             </div>
           </div>
         </div>
@@ -103,7 +107,7 @@ export default function HomeView() {
           <div ref={circleRef} className="home-intro-circle" aria-hidden="true" />
           <div className="overflow-hidden home-intro-text-wrap">
             <p className="home-intro-statement page-enter-fade">
-              The technical horsepower of a software engineer with the taste of a designer.
+             An engineer who speaks fluent design.
             </p>
           </div>
         </div>
@@ -133,6 +137,8 @@ export default function HomeView() {
           View all projects
         </TransitionLink>
       </section>
+
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,10 @@
+---
+description: Do not verify UI in the browser after implementing a change — ask the user to check
+alwaysApply: true
+---
+
+# UI verification
+
+After implementing a UI, layout, styling, routing, or rendered-data change, do not open the app, take screenshots, or otherwise check the result in a browser.
+
+Finish the implementation, say what changed, and ask the user to check it.

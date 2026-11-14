@@ -29,8 +29,9 @@ const blogPosts = [
 ];
 
 const interestOptions = [
-  "Frontend Development",
-  "UI/UX Design",
+  "Software Engineering",
+  "UI/UX Workflow Design",
+  "Travel & Aviation Software",
   "Branding",
   "Motion Design",
   "Other",

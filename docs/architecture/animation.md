@@ -22,7 +22,7 @@ flowchart TB
 
   subgraph cursor [Cursor Layer]
     CC["CustomCursor.jsx"]
-    MF["lib/mouseFollower.js"]
+    MF["lib/cursor/mouseFollower.js"]
     MFLib["mouse-follower npm"]
   end
 
@@ -118,6 +118,7 @@ CSS initial states: `src/components/PageTransition/PageViews.css`
 | Location | Effect |
 |----------|--------|
 | `src/views/HomeView.jsx` | Pill circle width scrub on intro |
+| `src/views/ProjectDetailView.jsx` | One-shot section reveals, frame image parallax (±5%), direction-aware next-project reel |
 | `src/components/Nav/Nav.jsx` | Close desktop menu on scroll |
 
 After DOM/layout changes, call `refreshScroll()`.

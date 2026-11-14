@@ -47,17 +47,14 @@ const SplashScreen = ({ setIsLoading }) => {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw] bg-black">
+    <div className="splash-overlay">
       <div
-        className={`${active ? "splash-visible" : "splash-not-visible"} flex h-[100vh] w-[100vw] items-center bg-gray-400`}
+        className={`${active ? "splash-visible" : "splash-not-visible"} splash-panel`}
       >
         <div className="m-auto flex w-[320px] items-center loader">
           <h2 className="text-[1.125rem] font-semibold">Muhammad Bilal</h2>
-          <span className="relative w-[80px] h-[2px] mx-5 bg-white rounded-full">
-            <span
-              className="z-3 absolute h-[2px] bg-black rounded-full transition-[width] duration-150 ease-out"
-              style={barWidth}
-            />
+          <span className="splash-track">
+            <span className="splash-track-fill" style={barWidth} />
           </span>
           <h2 className="text-[1.125rem] font-semibold tabular-nums">
             {percentage}%

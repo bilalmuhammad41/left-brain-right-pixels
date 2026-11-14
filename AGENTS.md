@@ -32,7 +32,7 @@ Operating system for AI coding agents working on this repository.
 | Architecture decisions | [docs/decisions/architecture-decisions.md](docs/decisions/architecture-decisions.md) |
 | Redundancy (don't duplicate) | [docs/audits/redundancy-report.md](docs/audits/redundancy-report.md) |
 | Technical debt | [docs/audits/technical-debt.md](docs/audits/technical-debt.md) |
-| Cursor deep API | [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) + `src/lib/mouseFollower.js` |
+| Cursor deep API | [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) + `src/lib/cursor/mouseFollower.js` |
 
 ---
 
