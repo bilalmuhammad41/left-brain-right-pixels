@@ -4,14 +4,14 @@ Portfolio site for Muhammad Bilal — a **Next.js 16 App Router** project with *
 
 ## Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 16 (App Router, `output: "export"`) |
-| UI | React 19 |
-| Animation | GSAP 3 (`ScrollSmoother`, `ScrollTrigger`) |
-| Styling | Tailwind CSS 3 + co-located CSS + CSS variables |
-| Cursor | Custom TypeScript module (`src/lib/cursor/`) |
-| Deploy | GitHub Actions → GitHub Pages |
+| Layer     | Technology                                                                                         |
+| --------- | -------------------------------------------------------------------------------------------------- |
+| Framework | Next.js 16 (App Router, `output: "export"`)                                                        |
+| UI        | React 19                                                                                           |
+| Animation | GSAP 3 (`ScrollSmoother`, `ScrollTrigger`)                                                         |
+| Styling   | Tailwind CSS 3 + co-located CSS + CSS variables                                                    |
+| Cursor    | [Cuberto mouse-follower](https://github.com/Cuberto/mouse-follower) via `src/lib/cursor/mouseFollower.js` |
+| Deploy    | GitHub Actions → GitHub Pages                                                                      |
 
 ## Hybrid routing model
 
@@ -39,7 +39,7 @@ flowchart TB
   PTS --> Smoother["ScrollSmootherWrapper"]
   PTS --> Views["PAGE_REGISTRY views"]
   PTS --> Curtain["TransitionCurtain + Overlay"]
-  Cursor --> CursorLib["lib/cursor"]
+  Cursor --> CursorLib["lib/cursor/mouseFollower.js"]
   Smoother --> GSAP["lib/gsap.js"]
 ```
 
@@ -48,7 +48,7 @@ flowchart TB
 1. `RootLayout` — DM Sans `@font-face`, `globals.css`
 2. `SiteLayout` — renders `SiteShell` only (does not render `{children}`)
 3. `SplashScreen` — preloads assets via `preloadAssets`, then exits
-4. `CustomCursor` — mounts GSAP cursor + magnetic system (desktop only)
+4. `CustomCursor` — mounts Cuberto Mouse Follower and magnetic targets (desktop only)
 5. `PageTransitionShell` — renders the active view in the initial HTML, mounts other views on navigation, runs the enter animation after the splash, and handles navigation
 
 The splash covers the viewport, but it does not replace the document. The active page's text is in the first HTML response so crawlers that do not run JavaScript can read it. Inactive views stay out of that document until someone navigates to them.
@@ -75,32 +75,32 @@ public/
 
 No Redux/Zustand. One React context:
 
-| Context | File | Provides |
-|---------|------|----------|
+| Context        | File                                                      | Provides                                                       |
+| -------------- | --------------------------------------------------------- | -------------------------------------------------------------- |
 | PageTransition | `src/components/PageTransition/PageTransitionContext.jsx` | `navigate`, `activeSlug`, `isTransitioning`, `registerPageRef` |
 
 ## Where to add features
 
-| Task | Location |
-|------|----------|
-| New page/view | `src/views/` + register in `src/lib/pages.js` + App Router stub in `src/app/(site)/` |
-| New shared component | `src/components/{Name}/` + document in `docs/components/component-index.md` |
-| New animation | Extend `src/lib/gsap.js` or `src/components/PageTransition/transitions.js` — see [animation.md](./animation.md) |
-| New scroll effect | Use `@/lib/gsap` ScrollTrigger; refresh via `refreshScroll()` |
-| New interactive element | Add cursor `data-*` attributes — see [design-system.md](./design-system.md) |
-| Static content | `src/constants/` |
-| Design tokens | `src/app/globals.css` `:root` |
+| Task                    | Location                                                                                                        |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------- |
+| New page/view           | `src/views/` + register in `src/lib/pages.js` + App Router stub in `src/app/(site)/`                            |
+| New shared component    | `src/components/{Name}/` + document in `docs/components/component-index.md`                                     |
+| New animation           | Extend `src/lib/gsap.js` or `src/components/PageTransition/transitions.js` — see [animation.md](./animation.md) |
+| New scroll effect       | Use `@/lib/gsap` ScrollTrigger; refresh via `refreshScroll()`                                                   |
+| New interactive element | Add cursor `data-*` attributes — see [design-system.md](./design-system.md)                                     |
+| Static content          | `src/constants/`                                                                                                |
+| Design tokens           | `src/app/globals.css` `:root`                                                                                   |
 
 ## Configuration
 
-| File | Role |
-|------|------|
-| `next.config.mjs` | Static export, `basePath`, trailing slashes, unoptimized images |
-| `tailwind.config.js` | Custom breakpoints, content paths |
-| `eslint.config.mjs` | ESLint 9 flat config + `eslint-config-next` |
-| `tsconfig.json` / `jsconfig.json` | `@/*` → `./src/*` |
-| `.nvmrc` | Node 24 |
-| `.github/workflows/` | CI lint/build; manual GitHub Pages deploy |
+| File                              | Role                                                            |
+| --------------------------------- | --------------------------------------------------------------- |
+| `next.config.mjs`                 | Static export, `basePath`, trailing slashes, unoptimized images |
+| `tailwind.config.js`              | Custom breakpoints, content paths                               |
+| `eslint.config.mjs`               | ESLint 9 flat config + `eslint-config-next`                     |
+| `tsconfig.json` / `jsconfig.json` | `@/*` → `./src/*`                                               |
+| `.nvmrc`                          | Node 24                                                         |
+| `.github/workflows/`              | CI lint/build; manual GitHub Pages deploy                       |
 
 ## Related docs
 

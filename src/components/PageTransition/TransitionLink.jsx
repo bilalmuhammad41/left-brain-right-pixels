@@ -27,8 +27,7 @@ const TransitionLink = ({
 
   return (
     <a
-      data-cursor-blend="difference"
-      data-cursor-scale="2.8"
+      data-cursor="-exclusion"
       href={publicHref(href)}
       className={className}
       onClick={handleClick}

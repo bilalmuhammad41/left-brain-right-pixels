@@ -123,8 +123,7 @@ function TextSection({ section, project }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-detail-launch link-arrow"
-                data-cursor-blend="difference"
-                data-cursor-scale="2.6"
+                data-cursor="-exclusion"
               >
                 Launch project
               </a>

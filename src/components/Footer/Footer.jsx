@@ -49,8 +49,7 @@ export default function Footer() {
                     href={item.link}
                     target="_blank"
                     rel="me noopener noreferrer"
-                    data-cursor-blend="difference"
-                    data-cursor-scale="2.8"
+                    data-cursor="-exclusion"
                   >
                     {item.name}
                   </a>
@@ -63,7 +62,7 @@ export default function Footer() {
             type="button"
             className="site-footer-top"
             aria-label="Back to top"
-            data-cursor-scale="2.4"
+            data-cursor="-exclusion"
             onClick={() => scrollToTop(false)}
           >
             <svg viewBox="0 0 16 16" aria-hidden="true">
