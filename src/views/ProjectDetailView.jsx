@@ -207,13 +207,10 @@ export default function ProjectDetailView({ project }) {
         const targets = launch ? [...words, launch] : [...words];
         if (!targets.length && !rules.length) return;
 
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: block,
-            start: "top 80%",
-            once: true,
-          },
-        });
+        // Populate the timeline before attaching ScrollTrigger. An empty
+        // timeline keeps end at 0, and the parallax refresh below then reads
+        // a trigger that this list has already dropped.
+        const timeline = gsap.timeline({ paused: true });
 
         if (targets.length) {
           timeline.to(
@@ -239,6 +236,13 @@ export default function ProjectDetailView({ project }) {
             0,
           );
         }
+
+        ScrollTrigger.create({
+          trigger: block,
+          start: "top 80%",
+          animation: timeline,
+          toggleActions: "play none none none",
+        });
       });
 
       root.querySelectorAll(".project-detail-frame").forEach((frame) => {

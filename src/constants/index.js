@@ -491,13 +491,6 @@ const projects = [
       },
     ],
   },
-  {
-    title: "MY TODO",
-    slug: "my-todo",
-    description: "Minimal task manager built with vanilla JavaScript",
-    link: "https://bilalmuhammad41.github.io/todo_List/",
-    year: "2023",
-  },
 ].filter((project) => !project.hidden);
 
 const NavItems = [
